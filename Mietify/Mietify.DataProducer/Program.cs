@@ -5,16 +5,11 @@ using Microsoft.Extensions.Configuration;
 
 Console.WriteLine("Hello, World!");
 
-if (args.Length != 1)
-{
-    Console.WriteLine("Please provide the configuration file path as a command line argument");
-}
-
 var config = new ProducerConfig {
     BootstrapServers = "localhost:29092",
     SecurityProtocol = SecurityProtocol.Plaintext,
 };
-const string topic = "purchases";
+const string topic = "test";
 
 string[] users = { "eabara", "jsmith", "sgarcia", "jbernard", "htanaka", "awalther" };
 string[] items = { "book", "alarm clock", "t-shirts", "gift card", "batteries" };
