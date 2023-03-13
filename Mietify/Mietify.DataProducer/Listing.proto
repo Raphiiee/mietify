@@ -1,0 +1,18 @@
+﻿syntax = "proto3";
+package tutorial;
+option csharp_namespace = "Mietyfy.Protobuf.Listing";
+
+message Listing {
+    string name = 1;
+    int32 area = 2;  // Unique ID number for this person.
+    double price = 3;
+    Address adress = 4;
+
+}
+
+message Address {
+    string street = 1;
+    string city = 2;
+    string country = 3;
+    string postalCode = 4;
+}
