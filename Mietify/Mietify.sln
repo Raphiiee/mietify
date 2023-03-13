@@ -2,6 +2,12 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mietify.DataProducer", "Mietify.DataProducer\Mietify.DataProducer.csproj", "{6E3CA092-5786-4A37-99AC-754F8D5EF35B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Deployment", "Deployment", "{BF43889B-F42B-41C7-8F29-473C8657B9DA}"
+	ProjectSection(SolutionItems) = preProject
+		..\docker-Commands.md = ..\docker-Commands.md
+		..\docker-compose.yml = ..\docker-compose.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
