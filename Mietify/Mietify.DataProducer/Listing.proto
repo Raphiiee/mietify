@@ -1,5 +1,7 @@
 ﻿syntax = "proto3";
+
 package tutorial;
+
 option csharp_namespace = "Mietyfy.Protobuf.Messages";
 
 message Listing {
