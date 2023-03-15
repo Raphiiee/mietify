@@ -2,7 +2,7 @@
 using Google.Protobuf;
 using Mietyfy.Protobuf.Messages;
 
-namespace Mietify.DataProducer.Serializers;
+namespace Mietify.Util.Serializers;
 
 public class ListingSerializer : ISerializer<Listing>
 {

@@ -1,33 +1,28 @@
 ﻿using Confluent.Kafka;
 using Google.Protobuf;
-using Mietify.Consumer.Deserializer;
 using Mietyfy.Protobuf.Messages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Mietify.Util.Deserializer;
 
 namespace Mietify.Consumer
 {
     public class ConsumerClass<T>
     {
-        ConsumerConfig config;
-        public ConsumerClass()
+        ConsumerConfig _config;
+
+        public ConsumerClass(ConsumerConfig config)
         {
-            this.config = new ConsumerConfig()
-            {
-                BootstrapServers = "localhost:29092",
-                SecurityProtocol = SecurityProtocol.Plaintext,
-                GroupId = "Id"
-            };
+            _config = config;
         }
 
         public async IAsyncEnumerable<Listing> ConsumeAsync()
         {
-            using (IConsumer<Ignore, Listing> c = new ConsumerBuilder<Ignore, Listing>(config).SetValueDeserializer(new ListingDeserializer()).Build())
+            using (IConsumer<Ignore, Listing> c = new ConsumerBuilder<Ignore, Listing>(_config).SetValueDeserializer(new ListingDeserializer()).Build())
             {
-
                 CancellationTokenSource cts = new CancellationTokenSource();
                 Console.CancelKeyPress += (_, e) =>
                 {
@@ -42,7 +37,6 @@ namespace Mietify.Consumer
 
                 while (!cts.IsCancellationRequested)
                 {
-
                     var cr = c.Consume(cts.Token);
 
                     Console.WriteLine($"Consumed message '{cr.Message.Value.Address.PostalCode}' at: '{cr.TopicPartitionOffset}'.");
@@ -55,7 +49,4 @@ namespace Mietify.Consumer
             }
         }
     }
-
 }
-
-

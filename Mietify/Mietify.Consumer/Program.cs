@@ -1,19 +1,92 @@
 ﻿using Confluent.Kafka;
+using Confluent.Kafka.Admin;
 using Mietify.Consumer;
-using Mietify.Consumer.Deserializer;
+using Mietify.Util.Serializers;
 using Mietyfy.Protobuf.Messages;
-using System.Collections;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography.X509Certificates;
 
+const string Totopic = "AveragePrice";
 
-var consumer = new ConsumerClass<Listing>();
+Dictionary<string, List<Listing>> listings = new Dictionary<string, List<Listing>>();
 
-var ayay =  consumer.ConsumeAsync();
-
-//basically our stream?
-await foreach(var x in ayay)
+async Task CreateTopicAverageListing(ConsumerConfig consumerConfig)
 {
-    Console.WriteLine($"AAAAAAA {x.Id}");
+    using (var adminClient = new AdminClientBuilder(new AdminClientConfig { BootstrapServers = consumerConfig.BootstrapServers }).Build())
+    {
+        try
+        {
+            await adminClient.CreateTopicsAsync(new TopicSpecification[]
+            {
+                new TopicSpecification { Name = Totopic, ReplicationFactor = 3, NumPartitions = 3 }
+            });
+        }
+        catch (CreateTopicsException e)
+        {
+            Console.WriteLine($"An error occured creating topic {e.Results[0].Topic}: {e.Results[0].Error.Reason}");
+        }
+    }
 }
 
+async Task SendUpdatedAverage(ProducerConfig producerConfig, IList<Listing> listOfListings)
+{
+    var postalCode = listOfListings.GroupBy(l => l.Address.PostalCode).ToList();
+    if (postalCode.Count > 1)
+        throw new Exception("Listings have different postal codes");
+
+    using (var producer = new ProducerBuilder<string, AveragePrice>(producerConfig.AsEnumerable()).SetValueSerializer(new AveragePriceSerializer()).Build())
+    {
+        var newAverage = new AveragePrice();
+        newAverage.ID = Guid.NewGuid().ToString();
+        newAverage.AveragePrice_ = listOfListings.Average(l => l.Price);
+        newAverage.PostalCode = postalCode[0].Key;
+        producer.Produce(Totopic, new Message<string, AveragePrice>()
+            {
+                Key = newAverage.ID, Value = newAverage
+            },
+            deliveryReport =>
+            {
+                if (deliveryReport.Error != ErrorCode.NoError)
+                {
+                    Console.WriteLine($"Failed to deliver message: {deliveryReport.Error.Reason}");
+                }
+                else
+                {
+                    Console.WriteLine($"Produced event to topic {Totopic}: key = {newAverage.ID} value = {newAverage.AveragePrice_}");
+                }
+            }
+        );
+        producer.Flush(TimeSpan.FromSeconds(10));
+    }
+}
+
+var producerConfig = new ProducerConfig
+{
+    BootstrapServers = "localhost:29092",
+    SecurityProtocol = SecurityProtocol.Plaintext
+};
+
+
+var consumerConfig = new ConsumerConfig()
+{
+    BootstrapServers = "localhost:29092",
+    SecurityProtocol = SecurityProtocol.Plaintext,
+    GroupId = "Id"
+};
+await CreateTopicAverageListing(consumerConfig);
+
+var consumer = new ConsumerClass<Listing>(consumerConfig);
+
+var ayay = consumer.ConsumeAsync();
+
+await foreach (var listing in ayay)
+{
+    if (listings.ContainsKey(listing.Address.PostalCode))
+    {
+        listings[listing.Address.PostalCode].Add(listing);
+    }
+    else
+    {
+        listings.Add(listing.Address.PostalCode, new List<Listing>() { listing });
+    }
+    
+    await SendUpdatedAverage(producerConfig, listings[listing.Address.PostalCode]);
+}

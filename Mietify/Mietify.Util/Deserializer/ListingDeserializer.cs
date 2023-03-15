@@ -1,7 +1,7 @@
 ﻿using Confluent.Kafka;
 using Mietyfy.Protobuf.Messages;
 
-namespace Mietify.Consumer.Deserializer;
+namespace Mietify.Util.Deserializer;
 
 public class ListingDeserializer : IDeserializer<Listing>
 {

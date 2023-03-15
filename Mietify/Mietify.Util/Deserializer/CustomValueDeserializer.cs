@@ -1,10 +1,8 @@
-﻿using Confluent.Kafka;
-
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
+using Confluent.Kafka;
 
-
-namespace Mietify.Consumer.Deserializer
+namespace Mietify.Util.Deserializer
 {
     public class CustomValueDeserializer<T> : IDeserializer<T>
     {

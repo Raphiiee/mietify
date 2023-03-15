@@ -3,7 +3,7 @@
 using Confluent.Kafka;
 using Confluent.Kafka.Admin;
 using Mietify.DataProducer;
-using Mietify.DataProducer.Serializers;
+using Mietify.Util.Serializers;
 using Mietyfy.Protobuf.Messages;
 
 var config = new ProducerConfig
@@ -28,6 +28,7 @@ using (var adminClient = new AdminClientBuilder(new AdminClientConfig { Bootstra
         Console.WriteLine($"An error occured creating topic {e.Results[0].Topic}: {e.Results[0].Error.Reason}");
     }
 }
+
 var messageGenerator = new KafkaMessageGenerator();
 var listOfListings = messageGenerator.GenerateMessages(5);
 

@@ -19,7 +19,7 @@ public class KafkaMessageGenerator
                     Country = "AT",
                     City = "Wien",
                     Street = "Schönbrunner Straße",
-                    PostalCode = $"100i"
+                    PostalCode = $"100{i}"
                 }
             });
        return listOfListings;
