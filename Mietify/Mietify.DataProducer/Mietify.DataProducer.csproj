@@ -14,4 +14,8 @@
       <PackageReference Include="Microsoft.Extensions.Configuration.Ini" Version="8.0.0-preview.1.23110.8" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Mietify.Util\Mietify.Util.csproj" />
+    </ItemGroup>
+
 </Project>
