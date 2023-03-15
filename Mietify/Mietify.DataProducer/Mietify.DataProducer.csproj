@@ -9,6 +9,7 @@
 
     <ItemGroup>
       <PackageReference Include="Confluent.Kafka" Version="2.0.2" />
+      <PackageReference Include="Google.Protobuf" Version="3.22.1" />
       <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0-preview.1.23110.8" />
       <PackageReference Include="Microsoft.Extensions.Configuration.Ini" Version="8.0.0-preview.1.23110.8" />
     </ItemGroup>
