@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace Mietyfy.Protobuf.Listing {
+namespace Mietyfy.Protobuf.Messages {
 
   /// <summary>Holder for reflection information generated from Listing.proto</summary>
   public static partial class ListingReflection {
@@ -24,17 +24,17 @@ namespace Mietyfy.Protobuf.Listing {
     static ListingReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Cg1MaXN0aW5nLnByb3RvEgh0dXRvcmlhbCJXCgdMaXN0aW5nEgwKBG5hbWUY",
-            "ASABKAkSDAoEYXJlYRgCIAEoBRINCgVwcmljZRgDIAEoARIhCgZhZHJlc3MY",
-            "BCABKAsyES50dXRvcmlhbC5BZGRyZXNzIkwKB0FkZHJlc3MSDgoGc3RyZWV0",
-            "GAEgASgJEgwKBGNpdHkYAiABKAkSDwoHY291bnRyeRgDIAEoCRISCgpwb3N0",
-            "YWxDb2RlGAQgASgJQhuqAhhNaWV0eWZ5LlByb3RvYnVmLkxpc3RpbmdiBnBy",
-            "b3RvMw=="));
+            "Cg1MaXN0aW5nLnByb3RvEgh0dXRvcmlhbCJkCgdMaXN0aW5nEgoKAmlkGAEg",
+            "ASgJEgwKBG5hbWUYAiABKAkSDAoEYXJlYRgDIAEoBRINCgVwcmljZRgEIAEo",
+            "ARIiCgdhZGRyZXNzGAUgASgLMhEudHV0b3JpYWwuQWRkcmVzcyJMCgdBZGRy",
+            "ZXNzEg4KBnN0cmVldBgBIAEoCRIMCgRjaXR5GAIgASgJEg8KB2NvdW50cnkY",
+            "AyABKAkSEgoKcG9zdGFsQ29kZRgEIAEoCUIcqgIZTWlldHlmeS5Qcm90b2J1",
+            "Zi5NZXNzYWdlc2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Mietyfy.Protobuf.Listing.Listing), global::Mietyfy.Protobuf.Listing.Listing.Parser, new[]{ "Name", "Area", "Price", "Adress" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Mietyfy.Protobuf.Listing.Address), global::Mietyfy.Protobuf.Listing.Address.Parser, new[]{ "Street", "City", "Country", "PostalCode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Mietyfy.Protobuf.Messages.Listing), global::Mietyfy.Protobuf.Messages.Listing.Parser, new[]{ "Id", "Name", "Area", "Price", "Address" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Mietyfy.Protobuf.Messages.Address), global::Mietyfy.Protobuf.Messages.Address.Parser, new[]{ "Street", "City", "Country", "PostalCode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace Mietyfy.Protobuf.Listing {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Mietyfy.Protobuf.Listing.ListingReflection.Descriptor.MessageTypes[0]; }
+      get { return global::Mietyfy.Protobuf.Messages.ListingReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -75,10 +75,11 @@ namespace Mietyfy.Protobuf.Listing {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Listing(Listing other) : this() {
+      id_ = other.id_;
       name_ = other.name_;
       area_ = other.area_;
       price_ = other.price_;
-      adress_ = other.adress_ != null ? other.adress_.Clone() : null;
+      address_ = other.address_ != null ? other.address_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -88,8 +89,20 @@ namespace Mietyfy.Protobuf.Listing {
       return new Listing(this);
     }
 
+    /// <summary>Field number for the "id" field.</summary>
+    public const int IdFieldNumber = 1;
+    private string id_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Id {
+      get { return id_; }
+      set {
+        id_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     /// <summary>Field number for the "name" field.</summary>
-    public const int NameFieldNumber = 1;
+    public const int NameFieldNumber = 2;
     private string name_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -101,11 +114,8 @@ namespace Mietyfy.Protobuf.Listing {
     }
 
     /// <summary>Field number for the "area" field.</summary>
-    public const int AreaFieldNumber = 2;
+    public const int AreaFieldNumber = 3;
     private int area_;
-    /// <summary>
-    /// Unique ID number for this person.
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Area {
@@ -116,7 +126,7 @@ namespace Mietyfy.Protobuf.Listing {
     }
 
     /// <summary>Field number for the "price" field.</summary>
-    public const int PriceFieldNumber = 3;
+    public const int PriceFieldNumber = 4;
     private double price_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -127,15 +137,15 @@ namespace Mietyfy.Protobuf.Listing {
       }
     }
 
-    /// <summary>Field number for the "adress" field.</summary>
-    public const int AdressFieldNumber = 4;
-    private global::Mietyfy.Protobuf.Listing.Address adress_;
+    /// <summary>Field number for the "address" field.</summary>
+    public const int AddressFieldNumber = 5;
+    private global::Mietyfy.Protobuf.Messages.Address address_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::Mietyfy.Protobuf.Listing.Address Adress {
-      get { return adress_; }
+    public global::Mietyfy.Protobuf.Messages.Address Address {
+      get { return address_; }
       set {
-        adress_ = value;
+        address_ = value;
       }
     }
 
@@ -154,10 +164,11 @@ namespace Mietyfy.Protobuf.Listing {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (Id != other.Id) return false;
       if (Name != other.Name) return false;
       if (Area != other.Area) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(Price, other.Price)) return false;
-      if (!object.Equals(Adress, other.Adress)) return false;
+      if (!object.Equals(Address, other.Address)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -165,10 +176,11 @@ namespace Mietyfy.Protobuf.Listing {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (Id.Length != 0) hash ^= Id.GetHashCode();
       if (Name.Length != 0) hash ^= Name.GetHashCode();
       if (Area != 0) hash ^= Area.GetHashCode();
       if (Price != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(Price);
-      if (adress_ != null) hash ^= Adress.GetHashCode();
+      if (address_ != null) hash ^= Address.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -187,21 +199,25 @@ namespace Mietyfy.Protobuf.Listing {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Name.Length != 0) {
+      if (Id.Length != 0) {
         output.WriteRawTag(10);
+        output.WriteString(Id);
+      }
+      if (Name.Length != 0) {
+        output.WriteRawTag(18);
         output.WriteString(Name);
       }
       if (Area != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(24);
         output.WriteInt32(Area);
       }
       if (Price != 0D) {
-        output.WriteRawTag(25);
+        output.WriteRawTag(33);
         output.WriteDouble(Price);
       }
-      if (adress_ != null) {
-        output.WriteRawTag(34);
-        output.WriteMessage(Adress);
+      if (address_ != null) {
+        output.WriteRawTag(42);
+        output.WriteMessage(Address);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -213,21 +229,25 @@ namespace Mietyfy.Protobuf.Listing {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Name.Length != 0) {
+      if (Id.Length != 0) {
         output.WriteRawTag(10);
+        output.WriteString(Id);
+      }
+      if (Name.Length != 0) {
+        output.WriteRawTag(18);
         output.WriteString(Name);
       }
       if (Area != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(24);
         output.WriteInt32(Area);
       }
       if (Price != 0D) {
-        output.WriteRawTag(25);
+        output.WriteRawTag(33);
         output.WriteDouble(Price);
       }
-      if (adress_ != null) {
-        output.WriteRawTag(34);
-        output.WriteMessage(Adress);
+      if (address_ != null) {
+        output.WriteRawTag(42);
+        output.WriteMessage(Address);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -239,6 +259,9 @@ namespace Mietyfy.Protobuf.Listing {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (Id.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Id);
+      }
       if (Name.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
       }
@@ -248,8 +271,8 @@ namespace Mietyfy.Protobuf.Listing {
       if (Price != 0D) {
         size += 1 + 8;
       }
-      if (adress_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Adress);
+      if (address_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Address);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -263,6 +286,9 @@ namespace Mietyfy.Protobuf.Listing {
       if (other == null) {
         return;
       }
+      if (other.Id.Length != 0) {
+        Id = other.Id;
+      }
       if (other.Name.Length != 0) {
         Name = other.Name;
       }
@@ -272,11 +298,11 @@ namespace Mietyfy.Protobuf.Listing {
       if (other.Price != 0D) {
         Price = other.Price;
       }
-      if (other.adress_ != null) {
-        if (adress_ == null) {
-          Adress = new global::Mietyfy.Protobuf.Listing.Address();
+      if (other.address_ != null) {
+        if (address_ == null) {
+          Address = new global::Mietyfy.Protobuf.Messages.Address();
         }
-        Adress.MergeFrom(other.Adress);
+        Address.MergeFrom(other.Address);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -294,22 +320,26 @@ namespace Mietyfy.Protobuf.Listing {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
+            Id = input.ReadString();
+            break;
+          }
+          case 18: {
             Name = input.ReadString();
             break;
           }
-          case 16: {
+          case 24: {
             Area = input.ReadInt32();
             break;
           }
-          case 25: {
+          case 33: {
             Price = input.ReadDouble();
             break;
           }
-          case 34: {
-            if (adress_ == null) {
-              Adress = new global::Mietyfy.Protobuf.Listing.Address();
+          case 42: {
+            if (address_ == null) {
+              Address = new global::Mietyfy.Protobuf.Messages.Address();
             }
-            input.ReadMessage(Adress);
+            input.ReadMessage(Address);
             break;
           }
         }
@@ -328,22 +358,26 @@ namespace Mietyfy.Protobuf.Listing {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
+            Id = input.ReadString();
+            break;
+          }
+          case 18: {
             Name = input.ReadString();
             break;
           }
-          case 16: {
+          case 24: {
             Area = input.ReadInt32();
             break;
           }
-          case 25: {
+          case 33: {
             Price = input.ReadDouble();
             break;
           }
-          case 34: {
-            if (adress_ == null) {
-              Adress = new global::Mietyfy.Protobuf.Listing.Address();
+          case 42: {
+            if (address_ == null) {
+              Address = new global::Mietyfy.Protobuf.Messages.Address();
             }
-            input.ReadMessage(Adress);
+            input.ReadMessage(Address);
             break;
           }
         }
@@ -367,7 +401,7 @@ namespace Mietyfy.Protobuf.Listing {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Mietyfy.Protobuf.Listing.ListingReflection.Descriptor.MessageTypes[1]; }
+      get { return global::Mietyfy.Protobuf.Messages.ListingReflection.Descriptor.MessageTypes[1]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

@@ -1,12 +1,13 @@
 ﻿syntax = "proto3";
 package tutorial;
-option csharp_namespace = "Mietyfy.Protobuf.Listing";
+option csharp_namespace = "Mietyfy.Protobuf.Messages";
 
 message Listing {
-    string name = 1;
-    int32 area = 2;  // Unique ID number for this person.
-    double price = 3;
-    Address adress = 4;
+    string id = 1;
+    string name = 2;
+    int32 area = 3;
+    double price = 4;
+    Address address = 5;
 
 }
 

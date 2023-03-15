@@ -1,1 +1,1 @@
-# mietify
+<PathToProto>/protoc.exe --csharp_out=<PathToDestDir>/ <PathToSrcFile>/Listing.proto
