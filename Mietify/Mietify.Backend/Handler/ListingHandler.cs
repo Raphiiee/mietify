@@ -26,7 +26,7 @@ public class ListingHandler : BackgroundService
             GroupId = "Id"
         };
 
-        using (IConsumer<Ignore, Mietyfy.Protobuf.Messages.Listing> c = new ConsumerBuilder<Ignore, Mietyfy.Protobuf.Messages.Listing>(consumerConfig)
+        using (IConsumer<Ignore, Mietify.Protobuf.Messages.Listing> c = new ConsumerBuilder<Ignore, Mietify.Protobuf.Messages.Listing>(consumerConfig)
                    .SetValueDeserializer(new ListingDeserializer()).Build())
         {
             c.Subscribe("Listings");

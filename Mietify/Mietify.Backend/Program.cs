@@ -22,7 +22,8 @@ namespace Mietify.Backend
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddAutoMapper(config =>
             {
-                config.AddProfile<ListingProfile>();
+                IServiceProvider provider = builder.Services.BuildServiceProvider();
+                config.AddProfile(new ListingProfile(provider.GetService<MietifyDbContext>()));
             });
             builder.Services.AddSwaggerGen();
            builder.Services.AddDbContext<MietifyDbContext>(options =>

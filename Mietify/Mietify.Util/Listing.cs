@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace Mietyfy.Protobuf.Messages {
+namespace Mietify.Protobuf.Messages {
 
   /// <summary>Holder for reflection information generated from Listing.proto</summary>
   public static partial class ListingReflection {
@@ -28,13 +28,13 @@ namespace Mietyfy.Protobuf.Messages {
             "ASgJEgwKBG5hbWUYAiABKAkSDAoEYXJlYRgDIAEoBRINCgVwcmljZRgEIAEo",
             "ARIiCgdhZGRyZXNzGAUgASgLMhEudHV0b3JpYWwuQWRkcmVzcyJMCgdBZGRy",
             "ZXNzEg4KBnN0cmVldBgBIAEoCRIMCgRjaXR5GAIgASgJEg8KB2NvdW50cnkY",
-            "AyABKAkSEgoKcG9zdGFsQ29kZRgEIAEoCUIcqgIZTWlldHlmeS5Qcm90b2J1",
+            "AyABKAkSEgoKcG9zdGFsQ29kZRgEIAEoCUIcqgIZTWlldGlmeS5Qcm90b2J1",
             "Zi5NZXNzYWdlc2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Mietyfy.Protobuf.Messages.Listing), global::Mietyfy.Protobuf.Messages.Listing.Parser, new[]{ "Id", "Name", "Area", "Price", "Address" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Mietyfy.Protobuf.Messages.Address), global::Mietyfy.Protobuf.Messages.Address.Parser, new[]{ "Street", "City", "Country", "PostalCode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Mietify.Protobuf.Messages.Listing), global::Mietify.Protobuf.Messages.Listing.Parser, new[]{ "Id", "Name", "Area", "Price", "Address" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Mietify.Protobuf.Messages.Address), global::Mietify.Protobuf.Messages.Address.Parser, new[]{ "Street", "City", "Country", "PostalCode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +55,7 @@ namespace Mietyfy.Protobuf.Messages {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Mietyfy.Protobuf.Messages.ListingReflection.Descriptor.MessageTypes[0]; }
+      get { return global::Mietify.Protobuf.Messages.ListingReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -139,10 +139,10 @@ namespace Mietyfy.Protobuf.Messages {
 
     /// <summary>Field number for the "address" field.</summary>
     public const int AddressFieldNumber = 5;
-    private global::Mietyfy.Protobuf.Messages.Address address_;
+    private global::Mietify.Protobuf.Messages.Address address_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::Mietyfy.Protobuf.Messages.Address Address {
+    public global::Mietify.Protobuf.Messages.Address Address {
       get { return address_; }
       set {
         address_ = value;
@@ -300,7 +300,7 @@ namespace Mietyfy.Protobuf.Messages {
       }
       if (other.address_ != null) {
         if (address_ == null) {
-          Address = new global::Mietyfy.Protobuf.Messages.Address();
+          Address = new global::Mietify.Protobuf.Messages.Address();
         }
         Address.MergeFrom(other.Address);
       }
@@ -337,7 +337,7 @@ namespace Mietyfy.Protobuf.Messages {
           }
           case 42: {
             if (address_ == null) {
-              Address = new global::Mietyfy.Protobuf.Messages.Address();
+              Address = new global::Mietify.Protobuf.Messages.Address();
             }
             input.ReadMessage(Address);
             break;
@@ -375,7 +375,7 @@ namespace Mietyfy.Protobuf.Messages {
           }
           case 42: {
             if (address_ == null) {
-              Address = new global::Mietyfy.Protobuf.Messages.Address();
+              Address = new global::Mietify.Protobuf.Messages.Address();
             }
             input.ReadMessage(Address);
             break;
@@ -401,7 +401,7 @@ namespace Mietyfy.Protobuf.Messages {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Mietyfy.Protobuf.Messages.ListingReflection.Descriptor.MessageTypes[1]; }
+      get { return global::Mietify.Protobuf.Messages.ListingReflection.Descriptor.MessageTypes[1]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

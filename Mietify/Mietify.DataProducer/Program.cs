@@ -8,6 +8,7 @@ using Mietyfy.Protobuf.Messages;
 using System.Collections;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using Mietify.Protobuf.Messages;
 
 var envvars = Environment.GetEnvironmentVariables().Cast<DictionaryEntry>();
 

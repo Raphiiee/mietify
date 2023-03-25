@@ -4,6 +4,7 @@ using Mietify.Consumer;
 using Mietify.Util.Serializers;
 using Mietyfy.Protobuf.Messages;
 using System.Collections;
+using Mietify.Protobuf.Messages;
 
 var envvars = Environment.GetEnvironmentVariables().Cast<DictionaryEntry>();
 
