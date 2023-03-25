@@ -16,7 +16,16 @@ docker exec --interactive --tty \<BROKER CONTAINER NAME> kafka-console-consumer 
 docker exec \<BROKER CONTAINER NAME> bash -c "kafka-topics --list --bootstrap-server localhost:9092"
 
 ### Build Docker Image of Backend Application
-docker build . mietifybackend
+in the "Mietify.Backend" directory do the following:
+docker build . -t mietifybackend
+
+### Build Docker Image of DataProducer 
+in the "Mietify" directory do the follwing:
+docker build . -t producer --file Mietify.DataProducer/Dockerfile
+
+### Build Docker image of Consumer
+in the "Mietify" directory do the following:
+docker build . -t consumer --file Mietify.Consumer/Dockerfile
 
 ### PostgresDB Connection
 Pgadmin - localhost:5050, email: root@root.com, pw: root, dbpw: root
