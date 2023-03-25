@@ -1,8 +1,7 @@
 ﻿using AutoMapper;
 using Confluent.Kafka;
+using Mietify.Backend.Handler.Deserializer;
 using Mietify.Backend.Models.DbModels;
-using Mietify.Backend.Models.WebDto;
-using Mietify.Util.Deserializer;
 using Mietyfy.Protobuf.Messages;
 
 namespace Mietify.Backend.Handler;
@@ -49,21 +48,11 @@ public class DistrictHandler : BackgroundService
                 {
                     dbDistrict.AveragePrice = cr.Message.Value.AveragePrice_;
                 }
-                
-                //_dbContext.Districts.Add(_mapper.Map<AveragePrice>(cr.Message.Value));
             }
 
             c.Close();
 
             return Task.CompletedTask;
         }
-    }
-}
-
-public class AverageDeserializer : IDeserializer<AveragePrice>
-{
-    public AveragePrice Deserialize(ReadOnlySpan<byte> data, bool isNull, SerializationContext context)
-    {
-        return AveragePrice.Parser.ParseFrom(data.ToArray());
     }
 }
