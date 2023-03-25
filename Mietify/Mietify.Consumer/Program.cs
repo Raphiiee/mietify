@@ -3,6 +3,21 @@ using Confluent.Kafka.Admin;
 using Mietify.Consumer;
 using Mietify.Util.Serializers;
 using Mietyfy.Protobuf.Messages;
+using System.Collections;
+
+var envvars = Environment.GetEnvironmentVariables().Cast<DictionaryEntry>();
+
+//Console.WriteLine("ENV VARIABLE:" + envvars.Select(x => x.Key.ToString() + ":" + x.Value.ToString())
+//    .Aggregate((x, y) => x + "; " + y));
+
+var kafkaconstring = Environment.GetEnvironmentVariable("KAFKA_CONNECTION");
+
+if (string.IsNullOrEmpty(kafkaconstring))
+{
+    kafkaconstring = "localhost:29092,localhost:39092,localhost:49092";
+    Console.WriteLine($"KAFKA_CONNECTION not specified in Environment - using fallback (non docker env): '{kafkaconstring}'");
+}
+
 
 const string Totopic = "AveragePrice";
 
@@ -60,14 +75,14 @@ async Task SendUpdatedAverage(ProducerConfig producerConfig, IList<Listing> list
 
 var producerConfig = new ProducerConfig
 {
-    BootstrapServers = "localhost:29092",
+    BootstrapServers = kafkaconstring,
     SecurityProtocol = SecurityProtocol.Plaintext
 };
 
 
 var consumerConfig = new ConsumerConfig()
 {
-    BootstrapServers = "localhost:29092",
+    BootstrapServers = kafkaconstring,
     SecurityProtocol = SecurityProtocol.Plaintext,
     GroupId = "Id"
 };

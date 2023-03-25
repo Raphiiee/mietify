@@ -6,9 +6,10 @@ public class KafkaMessageGenerator
 {
     public IEnumerable<Listing> GenerateMessages(int count)
     {
-        var listOfListings = new List<Listing>();
         for (int i = 0; i < count; i++)
-            listOfListings.Add(new Listing
+        {
+            Thread.Sleep(1500);
+            Listing listing = (new Listing
             {
                 Name = $"Schöne Wohnung im {i}",
                 Id = Guid.NewGuid().ToString(),
@@ -22,6 +23,7 @@ public class KafkaMessageGenerator
                     PostalCode = $"100{i}"
                 }
             });
-       return listOfListings;
+            yield return listing;
+        }
     }
 }

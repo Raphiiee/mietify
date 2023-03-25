@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Mietify.DataProducer": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}
