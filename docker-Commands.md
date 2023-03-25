@@ -14,3 +14,10 @@ docker exec --interactive --tty \<BROKER CONTAINER NAME> kafka-console-consumer 
 
 ### Show all Topics on Broker
 docker exec \<BROKER CONTAINER NAME> bash -c "kafka-topics --list --bootstrap-server localhost:9092"
+
+### Build Docker Image of Backend Application
+docker build . mietifybackend
+
+### PostgresDB Connection
+Pgadmin - localhost:5050, email: root@root.com, pw: root, dbpw: root
+Postgresql - localhost:5432, dbpw: root, dbname: test_db (see pgpass file)

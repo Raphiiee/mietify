@@ -9,13 +9,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Deployment", "Deployment", 
 	ProjectSection(SolutionItems) = preProject
 		..\docker-Commands.md = ..\docker-Commands.md
 		..\docker-compose.yml = ..\docker-compose.yml
+		..\pgpass = ..\pgpass
+		..\servers.json = ..\servers.json
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mietify.Consumer", "Mietify.Consumer\Mietify.Consumer.csproj", "{1643AB2E-0D1B-4D57-AC25-0448885ECF82}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mietify.Util", "Mietify.Util\Mietify.Util.csproj", "{1EDDAB25-F001-4254-B914-2EDB4D45C1FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mietify.Backend", "Mietify.Backend\Mietify.Backend.csproj", "{AC550CB3-5CA8-44B3-87EE-7D71C5838794}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mietify.Backend", "Mietify.Backend\Mietify.Backend.csproj", "{AC550CB3-5CA8-44B3-87EE-7D71C5838794}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,5 +44,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9CC8C573-98D1-40F8-AB41-D243EFF10201}
 	EndGlobalSection
 EndGlobal

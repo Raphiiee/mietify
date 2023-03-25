@@ -68,6 +68,30 @@ services:
       SCHEMA_REGISTRY_HOST_NAME: schema-registry
       SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: 'kafka-1:9092'
 
+  postgresdb:
+    container_name: postgresdb
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: test_db
+    ports:
+      - "5432:5432"
+
+  pgadmin:
+    container_name: pgadmin4
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: root@root.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    ports:
+      - "5050:80"
+    volumes: 
+      - ./servers.json:/pgadmin4/servers.json #connections / preconigured servers
+      - ./pgpass:/pgpass # passwords or connections in this file
+
   mietify-backend:
     image: mietifybackend
     depends_on:
@@ -76,7 +100,10 @@ services:
       - kafka-2
       - kafka-3
       - schema-registry
+      - postgresdb
     container_name: backend
+    links:
+      - postgresdb
     ports:
       - 80:80
       - 443:443

@@ -7,10 +7,10 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["Mietify.Backend/Mietify.Backend.csproj", "Mietify.Backend/"]
+COPY ["Mietify.Backend.csproj", "Mietify.Backend/"]
 RUN dotnet restore "Mietify.Backend/Mietify.Backend.csproj"
-COPY . .
 WORKDIR "/src/Mietify.Backend"
+COPY . .
 RUN dotnet build "Mietify.Backend.csproj" -c Release -o /app/build
 
 FROM build AS publish
