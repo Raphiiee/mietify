@@ -67,3 +67,26 @@ services:
     environment:
       SCHEMA_REGISTRY_HOST_NAME: schema-registry
       SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: 'kafka-1:9092'
+
+  mietify-backend:
+    image: mietifybackend
+    depends_on:
+      - zookeeper-1
+      - kafka-1
+      - kafka-2
+      - kafka-3
+      - schema-registry
+    container_name: backend
+    ports:
+      - 80:80
+      - 443:443
+    environment:
+      #ASPNET_VERSION: '6.0.15'
+      ASPNETCORE_ENVIRONMENT: 'Development'
+      ASPNETCORE_URLS: 'http://+80'
+      DOTNET_RUNNING_IN_CONTAINER: 'true'
+      DOTNET_USE_POLLING_FILE_WATCHER: '1'
+      #DOTNET_VERSION: '6.0.15'
+      #NUGET_FALLBACK_PACKAGES: '/root/.nuget/fallbackpackages;/root/.nuget/fallbackpackages2'
+      #NUGET_PACKAGES: '/root/.nuget/fallbackpackages2'
+      #PATH: '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
