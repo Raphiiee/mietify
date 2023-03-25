@@ -1,6 +1,5 @@
 # AOT oder JIT
----
-## AOT
+
 Der Vorteil von nativem AOT ist vor allem für Arbeitslasten mit einer hohen Anzahl von bereitgestellten Instanzen, wie Cloud-Infrastrukturen und Hyper-Scale-Dienste, von Bedeutung. Es wird derzeit nicht von ASP.NET Core unterstützt, sondern nur von Konsolenanwendungen. https://learn.microsoft.com/en-us/dotnet/core/deploying/native-aot/
 
 Beschränkungen:
@@ -16,4 +15,4 @@ Native AOT-Anwendungen sind mit einigen grundlegenden Einschränkungen und Kompa
 
 => Also AOT Anwendungen falls Startup Speed, Low Memory Footprint & Small Packaging wichtig sind. Wie bei Clients von Anwendungen wie Teams, Zoom, etc.
 
-## JIT
+=> JIT für Anwendungen falls peak throughput & reduced max latency wichtig sind. Wie bei Server Anwendungen von Voice-Chats oder Webseiten
