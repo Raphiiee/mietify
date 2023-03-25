@@ -1,4 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+using Mietify.Backend.Handler;
+using Mietify.Backend.Mapping;
 
 namespace Mietify.Backend
 {
@@ -18,9 +20,15 @@ namespace Mietify.Backend
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddAutoMapper(config =>
+            {
+                config.AddProfile<ListingProfile>();
+            });
             builder.Services.AddSwaggerGen();
            builder.Services.AddDbContext<MietifyDbContext>(options =>
                 options.UseSqlServer(config.GetConnectionString("MietifyDB")));
+           builder.Services.AddHostedService<DistrictHandler>();
+           builder.Services.AddHostedService<ListingHandler>();
 
             var app = builder.Build();
 

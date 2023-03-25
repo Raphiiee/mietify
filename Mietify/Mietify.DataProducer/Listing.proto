@@ -2,7 +2,7 @@
 
 package tutorial;
 
-option csharp_namespace = "Mietyfy.Protobuf.Messages";
+option csharp_namespace = "Mietify.Protobuf.Messages";
 
 message Listing {
     string id = 1;

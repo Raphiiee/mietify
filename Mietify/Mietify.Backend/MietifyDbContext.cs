@@ -7,24 +7,25 @@ public class MietifyDbContext : DbContext
 {
     public virtual DbSet<DbDistrict> Districts { get; set; }
     public virtual DbSet<DbListing> Listings { get; set; }
-    public virtual DbSet<DbCity> Cities { get; set; }
-    
+
+    public MietifyDbContext(DbContextOptions<MietifyDbContext> options) : base(options)
+    {
+    }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<DbListing>(entity =>
         {
-            entity.HasOne<DbDistrict>(e => e.District);
-            
+            entity.HasOne<DbDistrict>(e => e.District)
+                .WithMany(e => e.Listings)
+                .IsRequired();
         });
-        
+
         modelBuilder.Entity<DbDistrict>(e =>
         {
-            e.HasOne<DbCity>(l => l.City);
             e.Property(e => e.PostalCode)
                 .IsRequired()
                 .HasMaxLength(5);
-        });  
-        
-     
+        });
     }
 }

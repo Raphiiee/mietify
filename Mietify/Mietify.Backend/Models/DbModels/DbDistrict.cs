@@ -1,4 +1,6 @@
-﻿namespace Mietify.Backend.Models.DbModels;
+﻿using Mietify.Backend.Models.WebDto;
+
+namespace Mietify.Backend.Models.DbModels;
 
 public class DbDistrict
 {
@@ -10,6 +12,8 @@ public class DbDistrict
     
     public string Name { get; set; }
     
-    public DbCity City { get; set; }
+    public string City { get; set; }
     
+    public IList<DbListing> Listings { get; set; }
+
 }
