@@ -1,4 +1,5 @@
 ﻿using Confluent.Kafka;
+using Mietify.Protobuf.Messages;
 using Mietyfy.Protobuf.Messages;
 
 namespace Mietify.Util.Deserializer;

@@ -4,6 +4,7 @@ using Mietify.Consumer;
 using Mietify.Util.Serializers;
 using Mietyfy.Protobuf.Messages;
 using System.Collections;
+using Mietify.Protobuf.Messages;
 
 var envvars = Environment.GetEnvironmentVariables().Cast<DictionaryEntry>();
 
@@ -89,19 +90,22 @@ var consumerConfig = new ConsumerConfig()
 await CreateTopicAverageListing(consumerConfig);
 
 var consumer = new ConsumerClass<Listing>(consumerConfig);
-
-var ayay = consumer.ConsumeAsync();
-
-await foreach (var listing in ayay)
+while (true)
 {
-    if (listings.ContainsKey(listing.Address.PostalCode))
+    var ayay = consumer.ConsumeAsync();
+
+    await foreach (var listing in ayay)
     {
-        listings[listing.Address.PostalCode].Add(listing);
-    }
-    else
-    {
-        listings.Add(listing.Address.PostalCode, new List<Listing>() { listing });
-    }
+        if (listings.ContainsKey(listing.Address.PostalCode))
+        {
+            listings[listing.Address.PostalCode].Add(listing);
+        }
+        else
+        {
+            listings.Add(listing.Address.PostalCode, new List<Listing>() { listing });
+        }
     
-    await SendUpdatedAverage(producerConfig, listings[listing.Address.PostalCode]);
+        await SendUpdatedAverage(producerConfig, listings[listing.Address.PostalCode]);
+    }
+    Thread.Sleep(5000);
 }

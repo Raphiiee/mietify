@@ -6,7 +6,8 @@ option csharp_namespace = "Mietyfy.Protobuf.Messages";
 
 message AveragePrice {
     string ID = 1;
-    double AveragePrice = 2;
-    string PostalCode = 3;
+    string Name = 2;
+    double AveragePrice = 3;
+    string PostalCode = 4;
     
 }
